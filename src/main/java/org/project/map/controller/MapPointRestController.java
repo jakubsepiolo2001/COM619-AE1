@@ -107,6 +107,80 @@ public class MapPointRestController {
         return ResponseEntity.ok(matchingMapPoints);
     }
 
+    @Operation(summary = "Get map points within a latitude range")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found points in database within the latitude range", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = MapPoint.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Did not find any points in the specified latitude range", content = @Content)
+    })
+    @RequestMapping(path="/get/range/lat/{x}/{y}", method= RequestMethod.GET)
+    public ResponseEntity<List<MapPoint>> getByLatitudeRange(
+            @Parameter(description = "Lower bound of latitude range") @PathVariable(value = "x") double x,
+            @Parameter(description = "Upper bound of latitude range") @PathVariable(value = "y") double y) {
+
+        // Get all points that exist
+        Iterable<MapPoint> mpo = mapPointRepository.findAll();
+
+        // Create a temporary list
+        List<MapPoint> pointsInRange = new ArrayList<>();
+
+        for (MapPoint point : mpo) {
+            double lat = point.getLat();
+
+            // Check if the latitude is within the specified range
+            if (lat >= x && lat <= y) {
+                pointsInRange.add(point);
+            }
+        }
+
+        if (!pointsInRange.isEmpty()) {
+            // Return the list of points within the latitude range
+            return ResponseEntity.ok(pointsInRange);
+        } else {
+            // Return 404 if no points found in the specified latitude range
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Operation(summary = "Get map points within a longitude range")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found points in database within the longitude range", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = MapPoint.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Did not find any points in the specified longitude range", content = @Content)
+    })
+    @RequestMapping(path="/get/range/lng/{x}/{y}", method= RequestMethod.GET)
+    public ResponseEntity<List<MapPoint>> getByLongitudeRange(
+            @Parameter(description = "Lower bound of longitude range") @PathVariable(value = "x") double x,
+            @Parameter(description = "Upper bound of longitude range") @PathVariable(value = "y") double y) {
+
+        // Get all points that exist
+        Iterable<MapPoint> mpo = mapPointRepository.findAll();
+
+        // Create a temporary list
+        List<MapPoint> pointsInRange = new ArrayList<>();
+
+        for (MapPoint point : mpo) {
+            double lng = point.getLng();
+
+            // Check if the latitude is within the specified range
+            if (lng >= x && lng <= y) {
+                pointsInRange.add(point);
+            }
+        }
+
+        if (!pointsInRange.isEmpty()) {
+            // Return the list of points within the latitude range
+            return ResponseEntity.ok(pointsInRange);
+        } else {
+            // Return 404 if no points found in the specified latitude range
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     /////////////////////////////////////////
     ////////////POST REQUESTS///////////////
     ///////////////////////////////////////
@@ -150,6 +224,22 @@ public class MapPointRestController {
         } else {
             //Otherwise send a 404 response
             return ResponseEntity.notFound().build(); // HttpStatus.NOT_FOUND (404)
+        }
+    }
+
+    @Operation(summary = "Delete all points")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "All points deleted successfully"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content)
+    })
+    @RequestMapping(path="/delete/all", method= RequestMethod.POST)
+    public ResponseEntity<Void> deleteAllMapPoints() {
+        mapPointRepository.deleteAll();
+        if (mapPointRepository.count() == 0){
+            return ResponseEntity.noContent().build(); // HttpStatus.NO_CONTENT (204)
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // HttpStatus.INTERNAL_SERVER_ERROR (500)
         }
     }
 
