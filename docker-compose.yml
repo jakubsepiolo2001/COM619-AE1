@@ -3,9 +3,41 @@ version: "3.2"
 services: 
     # http://localhost:8080/
     restsimulator :
+        container_name: restsimulator
+        hostname: restsimulator
         image: jetty:9.4-jre11
+        networks:
+            service_tier:
+                aliases:
+                - restsimulator
         ports: 
         - "8080:8080"
         volumes:
         - ./target/com619-devops-project-ae1-0.0.1-SNAPSHOT.war:/var/lib/jetty/webapps/root.war
+            
+    nginxserver :
+        container_name: nginxserver
+        hostname: nginxserver
+        image: nginx:latest
+        networks:
+            service_tier:
+        ports:
+        - "80:80"
+        - "443:443"
+        volumes:
+        - ./server/nginx/default.conf:/etc/nginx/conf.d/default.conf
+        - ./server/certbot/conf:/etc/letsencrypt
+        - ./server/certbot/www:/var/www/certbot
 
+    certbot:
+        image: certbot/certbot
+        container_name: certbot
+        volumes:
+        - ./server/certbot/conf:/etc/letsencrypt
+        - ./server/certbot/www:/var/www/certbot
+        command: certonly --webroot -w /var/www/certbot/  --force-renewal --email 5dawes65@solent.ac.uk -d com619-1-vm.uksouth.cloudapp.azure.com --agree-tos
+
+
+networks:
+    service_tier:
+        name: service_tier
