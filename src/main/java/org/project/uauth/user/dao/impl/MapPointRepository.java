@@ -14,20 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package org.project.map.controller;
+package org.project.uauth.user.dao.impl;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.project.map.model.MapPoint;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-/**
- * Created by pingwin on 27.10.16.
- */
-@Controller
-public class PageController {
-
-    @RequestMapping("/")
-    public String homePage(){
-        return "LeafletJsp";
-    }
+@Repository
+public interface MapPointRepository extends JpaRepository<MapPoint,Long>{
 
 }

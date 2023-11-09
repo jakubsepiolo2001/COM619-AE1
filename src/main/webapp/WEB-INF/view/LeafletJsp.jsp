@@ -42,6 +42,8 @@ limitations under the License.
     <!-- -->
 
 </head>
+
+<jsp:include page="header.jsp" />
 <body>
 
 <div class="container">
@@ -94,4 +96,5 @@ limitations under the License.
 <script type='text/javascript' src='./js/map/markers.js'></script>
 <!-- -->
 </body>
+<jsp:include page="footer.jsp" />
 </html>

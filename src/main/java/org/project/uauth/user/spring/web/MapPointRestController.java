@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package org.project.map.controller;
+package org.project.uauth.user.spring.web;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.coyote.Response;
 import org.project.map.model.MapPoint;
-import org.project.map.repository.MapPointRepository;
+import org.project.uauth.user.dao.impl.MapPointRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
