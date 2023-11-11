@@ -7,7 +7,7 @@ package org.project.uauth.user.dao.impl;
 
 import java.util.List;
 
-import org.project.uauth.user.model.dto.User;
+import org.project.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

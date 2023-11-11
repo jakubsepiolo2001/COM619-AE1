@@ -1,11 +1,11 @@
-package org.project.spring;
+package org.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication(scanBasePackages = {"org.project.uauth.user.spring.web"})
+@SpringBootApplication(scanBasePackages = {"org.project"})
 public class SpringBootJspApplication extends SpringBootServletInitializer {
 
     @Override

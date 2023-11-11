@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.project.uauth.user.spring.service;
+package org.project.service;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.project.uauth.user.dao.impl.UserRepository;
-import org.project.uauth.user.model.dto.User;
-import org.project.uauth.user.model.dto.UserRole;
+import org.project.user.repository.UserRepository;
+import org.project.user.model.User;
+import org.project.user.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

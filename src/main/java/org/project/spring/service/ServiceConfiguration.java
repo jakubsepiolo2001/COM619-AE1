@@ -8,10 +8,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.project.uauth.user.spring.service;
+package org.project.service;
 
-import org.project.uauth.user.dao.impl.PersistenceJPAConfig;
-import org.springframework.context.annotation.Bean;
+import org.project.user.repository.PersistenceJPAConfig;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -22,7 +21,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 
-@ComponentScan(basePackages = {"org.project.uauth.user.spring.service"})
+@ComponentScan(basePackages = {"org.project.spring.service", "org.project.map.repository", "org.project.user.repository"})
 @Import({PersistenceJPAConfig.class})
 public class ServiceConfiguration {
 
