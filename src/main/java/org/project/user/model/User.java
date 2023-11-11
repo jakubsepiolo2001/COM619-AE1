@@ -1,4 +1,4 @@
-package org.project.uauth.user.model.dto;
+package org.project.user.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-import org.project.uauth.password.PasswordUtils;
+import org.project.user.password.PasswordUtils;
 
 import javax.persistence.Embedded;
 

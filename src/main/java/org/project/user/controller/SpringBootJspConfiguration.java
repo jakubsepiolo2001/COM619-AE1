@@ -1,6 +1,6 @@
-package org.project.uauth.user.spring.web;
+package org.project.user.controller;
 
-import org.project.uauth.user.spring.service.ServiceConfiguration;
+import org.project.spring.service.ServiceConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;

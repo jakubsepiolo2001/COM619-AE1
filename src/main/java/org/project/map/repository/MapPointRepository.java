@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package org.project;
+package org.project.map.repository;
 
 import org.project.map.model.MapPoint;
 import org.springframework.data.jpa.repository.JpaRepository;

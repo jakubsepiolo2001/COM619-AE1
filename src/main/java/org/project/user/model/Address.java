@@ -1,4 +1,4 @@
-package org.project.uauth.user.model.dto;
+package org.project.user.model;
 
 import javax.persistence.Embeddable;
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.project.uauth.password;
+package org.project.user.password;
 
 import org.mindrot.jbcrypt.BCrypt;
 

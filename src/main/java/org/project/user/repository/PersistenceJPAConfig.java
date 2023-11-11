@@ -1,4 +1,4 @@
-package org.project.uauth.user.dao.impl;
+package org.project.user.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "org.project.uauth.user.dao.impl")
 @PropertySource("classpath:persistence-app.properties") // set in calling configuration
 public class PersistenceJPAConfig {
 
@@ -32,7 +31,7 @@ public class PersistenceJPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("org.project.uauth.user.model.dto", "org.project.map.model");
+        em.setPackagesToScan("org.project.user.model", "org.project.map.model");
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.project.uauth.user.dao.impl;
+package org.project.user.repository;
 
 import java.util.List;
 

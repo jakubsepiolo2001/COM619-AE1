@@ -1,4 +1,4 @@
-package org.project.uauth.user.spring.web;
+package org.project.user.controller;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.project.uauth.user.dao.impl.UserRepository;
-import org.project.uauth.user.model.dto.Address;
-import org.project.uauth.user.model.dto.User;
-import org.project.uauth.user.model.dto.UserRole;
+import org.project.user.repository.UserRepository;
+import org.project.user.model.Address;
+import org.project.user.model.User;
+import org.project.user.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
