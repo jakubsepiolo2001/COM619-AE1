@@ -1,9 +1,8 @@
-<%-- 
-    Document   : header
-    Created on : Jan 4, 2020, 11:19:01 AM
-    Author     : cgallen
---%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="org.project.user.model.User" %>
+<%@ page import="org.project.user.model.UserRole" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -44,6 +43,7 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <c:set var="selectedPage" value="${requestScope.selectedPage}" />
+
                         <ul class="nav navbar-nav">
                             <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="/home">Home</a></li>
                             <li <% if ("map".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="/map">Map</a></li>
