@@ -32,12 +32,13 @@ import org.project.user.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 /**
@@ -53,6 +54,7 @@ public class MapPointRestController {
     /////////////////////////////////////////
     ////////////GET REQUESTS////////////////
     ///////////////////////////////////////
+
 
     @Operation(summary = "Get a list of map points")
     @RequestMapping(path="/get/all", method= RequestMethod.GET)

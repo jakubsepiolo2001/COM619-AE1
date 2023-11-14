@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.project.map.model.MapPoint;
+import org.project.map.repository.MapPointRepository;
 import org.project.user.repository.UserRepository;
 import org.project.user.model.Address;
 import org.project.user.model.User;
@@ -28,6 +30,8 @@ public class UserAndLoginController {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    MapPointRepository mapPointRepository;
 
     private User getSessionUser(HttpSession session) {
         User sessionUser = (User) session.getAttribute("sessionUser");
@@ -267,6 +271,30 @@ public class UserAndLoginController {
         model.addAttribute("selectedPage", "users");
         return "users";
     }
+
+    @RequestMapping(value = {"/points"}, method = RequestMethod.GET)
+    @Transactional
+    public String points(Model model,
+                         HttpSession session) {
+        String message = "";
+        String errorMessage = "";
+
+        User sessionUser = getSessionUser(session);
+        model.addAttribute("sessionUser", sessionUser);
+
+        if (!UserRole.ADMINISTRATOR.equals(sessionUser.getUserRole())) {
+            errorMessage = "you must be an administrator to access points information";
+            return "home";
+        }
+
+        List<MapPoint> mapPointList = mapPointRepository.findAll();
+
+        model.addAttribute("mapPointListSize", mapPointList.size());
+        model.addAttribute("mapPointList", mapPointList);
+        model.addAttribute("selectedPage", "points");
+        return "points";
+    }
+
 
     @RequestMapping(value = {"/viewModifyUser"}, method = RequestMethod.GET)
     public String modifyuser(
