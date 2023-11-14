@@ -36,7 +36,7 @@ public class MVCController {
     // this redirects calls to the root of our application to index.html
     @RequestMapping(value = "/", method = {RequestMethod.GET, RequestMethod.POST})
     public String index(Model model) {
-        return "redirect:/index.html";
+        return "home";
     }
     
     @RequestMapping("/map")
