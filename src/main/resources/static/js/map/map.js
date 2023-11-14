@@ -6,10 +6,12 @@ var map = L.map( 'map', {
     zoom: 6
 });
 
+
+
 //Temporary function for button to test POST request for adding a point
 function createPoint() {
     //Will only work locally for now until environment variables are introduced in application.properties
-    fetch("http://localhost:8080/add/", {
+    fetch(apiUrl + "add/", {
         method: "POST",
         headers: {
             'Content-Type': "application/json"
