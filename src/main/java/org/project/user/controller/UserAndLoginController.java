@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+
+import io.swagger.v3.oas.annotations.Operation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.project.map.model.MapPoint;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+//TODO Convert to OpenAPI Format
 @Controller
 @RequestMapping("/")
 public class UserAndLoginController {
@@ -44,6 +47,7 @@ public class UserAndLoginController {
         return sessionUser;
     }
 
+    @Operation(summary = "Logout")
     @RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
     public String logout(Model model,
             HttpSession session) {
@@ -55,6 +59,7 @@ public class UserAndLoginController {
         return "redirect:/home";
     }
 
+    @Operation(summary = "Login (GET)")
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     @Transactional
     public String login(
@@ -82,6 +87,7 @@ public class UserAndLoginController {
 
     }
 
+    @Operation(summary = "Login (POST)")
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
     @Transactional
     public String login(@RequestParam(value = "action", required = false) String action,
@@ -162,6 +168,7 @@ public class UserAndLoginController {
         }
     }
 
+    @Operation(summary = "Register (GET)")
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     @Transactional
     public String registerGET(@RequestParam(value = "action", required = false) String action,
@@ -183,6 +190,7 @@ public class UserAndLoginController {
         return "register";
     }
 
+    @Operation(summary = "Register (POST)")
     @RequestMapping(value = "/register", method = {RequestMethod.POST})
     @Transactional
     public String register(@RequestParam(value = "action", required = false) String action,
@@ -249,6 +257,7 @@ public class UserAndLoginController {
         }
     }
 
+    @Operation(summary = "Get Users")
     @RequestMapping(value = {"/users"}, method = RequestMethod.GET)
     @Transactional
     public String users(Model model,
@@ -272,6 +281,7 @@ public class UserAndLoginController {
         return "users";
     }
 
+    @Operation(summary = "Get Map Points")
     @RequestMapping(value = {"/points"}, method = RequestMethod.GET)
     @Transactional
     public String points(Model model,
@@ -296,6 +306,7 @@ public class UserAndLoginController {
     }
 
 
+    @Operation(summary = "View or Modify User (GET)")
     @RequestMapping(value = {"/viewModifyUser"}, method = RequestMethod.GET)
     public String modifyuser(
             @RequestParam(value = "username", required = true) String username,
@@ -343,6 +354,7 @@ public class UserAndLoginController {
         return "viewModifyUser";
     }
 
+    @Operation(summary = "View or Modify User (POST)")
     @RequestMapping(value = {"/viewModifyUser"}, method = RequestMethod.POST)
     public String updateuser(
             @RequestParam(value = "username", required = true) String username,

@@ -41,9 +41,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-/**
- * Created by pingwin on 25.10.16.
- */
+//TODO restrict some of these endpoints without login and send 403
 @RestController
 public class MapPointRestController {
 
