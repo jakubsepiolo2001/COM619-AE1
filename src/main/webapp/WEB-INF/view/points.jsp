@@ -43,6 +43,7 @@ limitations under the License.
             <c:forEach var="point" items="${mapPointList}">
                 <tr>
                     <td>${point.id}</td>
+                    <td>${point.name}</td>
                     <td>${point.description}</td>
                     <td>${point.category}</td>
                     <td>${point.lat}</td>
