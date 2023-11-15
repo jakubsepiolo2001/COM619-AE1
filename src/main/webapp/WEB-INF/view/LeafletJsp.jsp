@@ -60,6 +60,7 @@ limitations under the License.
 <div class="container">
 
     <button onclick="createPoint()">Create Point!</button>
+    <button onclick="getLocation()">Get My Location!</button>
     <article>
         <header>
             <h1>Leaflet App</h1>

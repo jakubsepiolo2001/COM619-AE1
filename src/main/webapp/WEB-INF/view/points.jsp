@@ -17,10 +17,16 @@ limitations under the License.
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="org.project.user.model.User"%>
 <%@page import="org.project.user.model.UserRole"%>
+<%@ page import="org.springframework.core.env.Environment" %>
+<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
+<%
+    Environment environment = WebApplicationContextUtils.getWebApplicationContext(application).getEnvironment();
+    String apiUrl = environment.getProperty("api.base-url");
+%>
 <c:set var = "selectedPage" value = "admin" scope="request"/>
 <jsp:include page="header.jsp" />
 <!-- start of users.jsp selectedPage=${selectedPage}-->
-
+<script>var apiUrl = '<%= apiUrl%>'</script>
 <!-- Begin page content -->
 <main role="main" class="container">
 

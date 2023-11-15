@@ -6,7 +6,7 @@ document.querySelector('table').addEventListener('click', function(event) {
         console.log("Hello, this is being called");
         console.log("Point ID:", pointid);
 
-        fetch('http://localhost:8080/delete/id/' + pointid, {
+        fetch(apiUrl + "delete/id/"+ pointid, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

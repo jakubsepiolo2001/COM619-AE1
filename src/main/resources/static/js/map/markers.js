@@ -21,7 +21,7 @@ L.layerJSON({
         });
     },
     buildPopup: function(data, marker) {
-        return '<h4>'+ data.name +'</h4><br/>Category:<b>'+ data.category +'</b><hr>Description:<br/>'+ data.description +''|| null;
+        return '<h4>'+ data.name +'</h4><br/>Category: <b>'+ data.category +'</b><hr>Description:<br/>'+ data.description +''|| null;
     }
 })
     .on('dataloading',function(e) {
