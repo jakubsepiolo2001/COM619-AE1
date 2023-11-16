@@ -27,19 +27,21 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.project.map.model.MapPoint;
 import org.project.map.repository.MapPointRepository;
+import org.project.user.model.User;
+import org.project.user.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 
+import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-/**
- * Created by pingwin on 25.10.16.
- */
+//TODO restrict some of these endpoints without login and send 403
 @RestController
 public class MapPointRestController {
 
@@ -50,6 +52,7 @@ public class MapPointRestController {
     /////////////////////////////////////////
     ////////////GET REQUESTS////////////////
     ///////////////////////////////////////
+
 
     @Operation(summary = "Get a list of map points")
     @RequestMapping(path="/get/all", method= RequestMethod.GET)
@@ -193,7 +196,11 @@ public class MapPointRestController {
     @RequestMapping(path="/add/", method= RequestMethod.POST)
     public ResponseEntity<MapPoint> createMapPoint(
             @Parameter(description = "MapPoint details to be created", required = true)
-            @Valid @RequestBody MapPoint mapPointRequest) {
+            @Valid @RequestBody MapPoint mapPointRequest, HttpSession session) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if(sessionUser == null || UserRole.ANONYMOUS.equals(sessionUser.getUserRole())){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
         //Save the new point
         MapPoint createdMapPoint = mapPointRepository.save(mapPointRequest);
 

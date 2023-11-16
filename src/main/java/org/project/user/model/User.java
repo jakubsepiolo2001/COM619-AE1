@@ -12,7 +12,8 @@ import javax.persistence.Embedded;
 
 @Entity
 public class User {
-
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String firstName = "";
