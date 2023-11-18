@@ -33,3 +33,29 @@ ON DUPLICATE KEY UPDATE
 	user_sname = @user_sname,
 	user_password = @user_password,
 	User_role = @user_role;
+CREATE TABLE `point` (
+  `point_id` int NOT NULL AUTO_INCREMENT,
+  `point_name` varchar(45) DEFAULT NULL,
+  `point_desc` varchar(45) DEFAULT NULL,
+  `point_cat` varchar(45) DEFAULT NULL,
+  `point_lat` decimal(10,8) NOT NULL,
+  `point_lon` decimal(11,8) NOT NULL,
+  `point_owner` int DEFAULT '1',
+  PRIMARY KEY (`point_id`),
+  KEY `fk_owner_idx` (`point_owner`),
+  CONSTRAINT `fk_owner` FOREIGN KEY (`point_owner`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Holds map points for map app';
+SET @point_id = 1,
+	@point_name = '1',
+	@point_lat = '50.0',
+	@point_lon = '1.0',
+	@point_owner = '1';
+INSERT INTO point
+	(point_id, point_name, point_lat, point_lon, point_owner)
+VALUES
+	(@point_id, @point_name, @point_lat, @point_lon, @point_owner)
+ON DUPLICATE KEY UPDATE
+	point_name = @point_name,
+	point_lat = @point_lat,
+	point_lon = @point_lon,
+	point_owner = @point_owner;
