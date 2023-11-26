@@ -1,5 +1,8 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
+server/my-db/
+server/certbot/
+
 
 ### STS ###
 .apt_generated

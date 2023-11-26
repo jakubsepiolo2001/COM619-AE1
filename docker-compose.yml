@@ -35,7 +35,31 @@ services:
         volumes:
         - ./server/certbot/conf:/etc/letsencrypt
         - ./server/certbot/www:/var/www/certbot
-        command: certonly --webroot -w /var/www/certbot/  --force-renewal --email 5dawes65@solent.ac.uk -d com619-1-vm.uksouth.cloudapp.azure.com --agree-tos
+        command: certonly --webroot -w /var/www/certbot/  --staging --force-renewal --email 5dawes65@solent.ac.uk -d com619-1-vm.uksouth.cloudapp.azure.com --agree-tos 
+
+    db:
+        image: mysql:8.0
+        restart: always
+        networks:
+            service_tier:
+        environment:
+          MYSQL_DATABASE: 'db'
+          # So you don't have to use root, but you can if you like
+          MYSQL_USER: 'user'
+          # You can use whatever password you like
+          MYSQL_PASSWORD: 'userpassword'
+          # Password for root access
+          MYSQL_ROOT_PASSWORD: 'rootpassword'
+        ports:
+          # <Port exposed> : <MySQL Port running inside container>
+          - '3306:3306'
+        expose:
+          # Opens port 3306 on the container
+          - '3306'
+          # Where our data will be persisted
+        volumes:
+          - ./server/my-db:/var/lib/mysql
+          - ./server/init:/docker-entrypoint-initdb.d:ro
 
 
 networks:
