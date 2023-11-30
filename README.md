@@ -96,10 +96,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [![springboot][spring.io]][spring-url]
 * [![nginx][nginx.com]][nginx-url]
 * [![mysql][mysql.com]][mysql-url]
-* [![springboot][spring.io]][spring-url]
-* [![springboot][spring.io]][spring-url]
-* [![springboot][spring.io]][spring-url]
-* [![springboot][spring.io]][spring-url]
+* [![swagger][swagger.io]][swagger-url]
+* [![azure][azure.com]][azure-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -107,33 +105,36 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+* Java (Java 19 is recommended)
+  https://www.java.com/download/ie_manual.jsp
+ * Docker
+ 
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Ensure you have Java
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/gjakubsepiolo2001/COM619-AE1.git
    ```
-3. Install NPM packages
+3. Create a clean maven build
    ```sh
-   npm install
+   mvn clean insall
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Build docker images
+   ```sh
+   docker-compose build
    ```
-
+5. Run the application in docker
+	```sh
+	docker-compose up
+	```
+Make sure this is accurate
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -233,4 +234,11 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [nginx-url]: https://www.nginx.com/
 [mysql.com]: https://img.shields.io/badge/MySQL-000000?style=for-the-badge&logo=mysql&logoColor=yellow
 [mysql-url]: https://www.mysql.com/
+[docker.com]: https://img.shields.io/badge/DOCKER-000000?style=for-the-badge&logo=docker&logoColor=blue
+[docker-url]: https://www.docker.com/
+[swagger.io]: https://img.shields.io/badge/openapi-000000?style=for-the-badge&logo=swagger&logoColor=lightgreen
+[swagger-url]: https://swagger.io/
+[azure.com]: https://img.shields.io/badge/azure-000000?style=for-the-badge&logo=microsoftazure&logoColor=lightblue
+[azure-url]: https://azure.microsoft.com/en-gb
+
 
