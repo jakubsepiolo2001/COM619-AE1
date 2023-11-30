@@ -1,5 +1,6 @@
 package org.project.spring;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,16 +15,16 @@ public class SpringBootJspApplication extends SpringBootServletInitializer {
     @Bean
     CommandLineRunner runner(MapPointRepository mapPointRepository) {
         return args -> {
+            // Retrieve existing points from the database
+            Iterable<MapPoint> existingPoints = mapPointRepository.findAll();
 
-            MapPoint point1 = new MapPoint("Point 1", "Some point", "POI", 54, 17);
-            MapPoint point2 = new MapPoint("Point 2", "Some point", "Nature", 55, 17);
-            MapPoint point3 = new MapPoint("Point 3", "Some point", "Shop", 56, 17);
-            MapPoint point4 = new MapPoint("Point 4", "Some point", "POI", 57, 17);
-            mapPointRepository.save(point1);
-            mapPointRepository.save(point2);
-            mapPointRepository.save(point3);
-            mapPointRepository.save(point4);
-
+            // Check if points exist before adding sample points
+            if (!existingPoints.iterator().hasNext()) {
+                // Add sample points only if no points exist
+                MapPoint point1 = new MapPoint("No DB", "This point was created because of no DB", "POI", 51, 51);
+                // Save the sample points to the database
+                mapPointRepository.save(point1);
+            }
         };
     }
 

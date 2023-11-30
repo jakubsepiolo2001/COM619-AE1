@@ -6,6 +6,8 @@ services:
         container_name: restsimulator
         hostname: restsimulator
         image: jetty:9.4-jre11
+        environment:
+            SPRING_PROFILES_ACTIVE: 'dev'
         networks:
             service_tier:
                 aliases:
