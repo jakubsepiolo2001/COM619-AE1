@@ -34,7 +34,7 @@
         
         <!-- The name org.solent specifies that log names beginning with this string are dealt with by the following appenders -->
         <!-- i.e. in our config, classes in package names beginnign org.solent -->
-        <Logger name="org.solent"  additivity="false" level="DEBUG">
+        <Logger name="org.project"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
@@ -44,7 +44,7 @@
             <AppenderRef ref="appLog"/>
         </Logger>
         
-        <Logger name="org.hsqldb.jdbc"  additivity="false" level="INFO">
+        <Logger name="com.mysql.cj.jdbc.Driver"  additivity="false" level="INFO">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>
         </Logger>
