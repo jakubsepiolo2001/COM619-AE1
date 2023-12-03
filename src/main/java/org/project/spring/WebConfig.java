@@ -3,24 +3,34 @@ package org.project.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-
 import java.util.Locale;
-import java.util.TimeZone;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
 @Configuration
-public class MyBeansConfig {
+public class WebConfig implements WebMvcConfigurer {
+
+    // Define the LocaleResolver bean
     @Bean
     public LocaleResolver localeResolver() {
-        CookieLocaleResolver localeResolver = new CookieLocaleResolver();
-        localeResolver.setDefaultLocale(Locale.ENGLISH);
-        localeResolver.setDefaultTimeZone(TimeZone.getTimeZone("UTC"));
+        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+        localeResolver.setDefaultLocale(Locale.ENGLISH); // Set the default locale
         return localeResolver;
     }
 
+    // Define the LocaleChangeInterceptor bean
+    @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
-        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-        localeChangeInterceptor.setParamName("localeData");
-        return localeChangeInterceptor;
+        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+        interceptor.setParamName("lang"); // Set the request parameter name to change the locale
+        return interceptor;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // Register the LocaleChangeInterceptor
+        registry.addInterceptor(localeChangeInterceptor());
     }
 }
