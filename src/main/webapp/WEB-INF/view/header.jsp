@@ -23,6 +23,15 @@ limitations under the License.
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            function changeLocale() {
+                console.log("changeLocale function called");
+                console.log()
+                var langDropdown = document.getElementById("langDropdown");
+                var selectedLang = langDropdown.options[langDropdown.selectedIndex].value;
+                window.location.href = selectedLang;
+            }
+        </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +54,8 @@ limitations under the License.
     <body>
 
         <div class="container">
-
+            <c:set var="currentLanguage" value="${pageContext.request.locale.language}" />
+            <c:out value="${pageContext.request.locale.language}"/>
             <!-- Static navbar -->
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -74,6 +84,14 @@ limitations under the License.
                                     </ul>
                                 </li>
                             </c:if>
+                            <li>
+                                <select id="langDropdown" onchange="changeLocale()">
+                                    <option></option>
+                                    <option value="${pageContext.request.contextPath}/change-locale?lang=en" <% if ("en".equals(request.getAttribute("currentLanguage"))) {%>selected<% }%>><spring:message code="switch-en" text="English" /></option>
+                                    <option value="${pageContext.request.contextPath}/change-locale?lang=it" <% if ("it".equals(request.getAttribute("currentLanguage"))) {%>selected<% }%>><spring:message code="switch-it" text="Italian" /></option>
+                                    <!-- Add more languages as needed -->
+                                </select>
+                            </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <!-- user role:  ${sessionUser.userRole}-->

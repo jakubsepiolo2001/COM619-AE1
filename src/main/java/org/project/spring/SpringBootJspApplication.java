@@ -13,7 +13,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import java.util.Locale;
 
-@SpringBootApplication(scanBasePackages = {"org.project.map", "org.project.spring", "org.project.user", "org.project.map.repository", "org.project"})
+@SpringBootApplication(scanBasePackages = {"org.project.map", "org.project.spring", "org.project.user", "org.project.map.repository", "org.project", "org.project.spring.controller"})
 public class SpringBootJspApplication extends SpringBootServletInitializer {
 
     @Bean

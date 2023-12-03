@@ -25,7 +25,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "org.project.map.repository",
         "org.project.user.repository"
 })
-@ComponentScan(basePackages = {"org.project.spring.service", "org.project.map.repository", "org.project.user.repository"})
+@ComponentScan(basePackages = {"org.project.spring.service", "org.project.map.repository", "org.project.user.repository", "org.project.spring.controller"})
 @Import({PersistenceJPAConfig.class})
 public class ServiceConfiguration {
 
