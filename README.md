@@ -1,4 +1,5 @@
 
+
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
@@ -117,7 +118,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Ensure you have Java
+1. Ensure you have Java and Docker installed
 2. Clone the repo
    ```sh
    git clone https://github.com/gjakubsepiolo2001/COM619-AE1.git
@@ -126,13 +127,13 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    mvn clean insall
    ```
-4. Build docker images
+4. To run the build locally on your machine
    ```sh
-   docker-compose build
+   docker-compose -f docker-compose-dev.yml up
    ```
-5. Run the application in docker
+5. To run the build in a remote cloud server
 	```sh
-	docker-compose up
+	docker-compose -f docker-compose.yml up
 	```
 Make sure this is accurate
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
