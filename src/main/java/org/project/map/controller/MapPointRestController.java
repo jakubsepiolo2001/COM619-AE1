@@ -191,6 +191,7 @@ public class MapPointRestController {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = MapPoint.class))
             }),
             @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
     @RequestMapping(path="/add/", method= RequestMethod.POST)
@@ -212,15 +213,20 @@ public class MapPointRestController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Point deleted successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content),
             @ApiResponse(responseCode = "404", description = "Did not find any Point with the supplied ID", content = @Content)
     })
     @RequestMapping(path="/delete/id/{id}", method= RequestMethod.POST)
     public ResponseEntity<Void> deleteMapPointById(
             @Parameter(description = "ID of Point to be deleted", required = true)
-            @PathVariable("id") long id) {
+            @PathVariable("id") long id,
+            HttpSession session) {
         //Search for point first
         Optional<MapPoint> mapPointOptional = mapPointRepository.findById(id);
-
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if(sessionUser == null || !UserRole.ADMINISTRATOR.equals(sessionUser.getUserRole())){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
         if (mapPointOptional.isPresent()) {
             //If it exists then delete it
             mapPointRepository.deleteById(id);
@@ -234,10 +240,16 @@ public class MapPointRestController {
     @Operation(summary = "Delete all points")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "All points deleted successfully"),
+            @ApiResponse(responseCode = "403", description = "Forbidden", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content)
     })
     @RequestMapping(path="/delete/all", method= RequestMethod.POST)
-    public ResponseEntity<Void> deleteAllMapPoints() {
+    public ResponseEntity<Void> deleteAllMapPoints(
+            HttpSession session) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if(sessionUser == null || !UserRole.ADMINISTRATOR.equals(sessionUser.getUserRole())){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
         mapPointRepository.deleteAll();
         if (mapPointRepository.count() == 0){
             return ResponseEntity.noContent().build(); // HttpStatus.NO_CONTENT (204)
