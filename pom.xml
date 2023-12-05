@@ -111,11 +111,12 @@
          <scope>provided</scope>
       </dependency>
 
-      <!-- <dependency> -->
-      <!-- <groupId>mysql</groupId> -->
-      <!-- <artifactId>mysql-connector-java</artifactId> -->
-      <!-- <scope>runtime</scope> -->
-      <!-- </dependency> -->
+      <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+         <version>8.0.23</version>
+      <scope>runtime</scope>
+      </dependency>
 
       <dependency>
          <groupId>org.springframework.boot</groupId>
@@ -134,12 +135,6 @@
                <artifactId>spring-boot-starter-logging</artifactId>
             </exclusion>
          </exclusions>
-      </dependency>
-
-      <!-- IN MEMORY Database and JDBC Driver -->
-      <dependency>
-         <groupId>org.hsqldb</groupId>
-         <artifactId>hsqldb</artifactId>
       </dependency>
 
       <!-- dependencies for java 11 -->
@@ -166,6 +161,8 @@
          <artifactId>cglib-nodep</artifactId>
          <version>${cglib-nodep.version}</version>
       </dependency>
+
+
 
       <!-- junit dependencies -->
       <dependency>

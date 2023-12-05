@@ -10,7 +10,7 @@ import org.project.user.password.PasswordUtils;
 
 import javax.persistence.Embedded;
 
-@Entity
+@Entity(name = "Userr")
 public class User {
     @Id
     @GeneratedValue

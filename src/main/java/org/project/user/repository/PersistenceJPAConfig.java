@@ -20,7 +20,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:persistence-app.properties") // set in calling configuration
 public class PersistenceJPAConfig {
 
     @Autowired
@@ -43,23 +42,22 @@ public class PersistenceJPAConfig {
     @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        if (env.getProperty("jdbc.driverClassName") == null) {
-            throw new IllegalArgumentException("jdbc.driverClassName must be set in properties");
-        }
-        if (env.getProperty("jdbc.url") == null) {
+        String driverClassName = env.getProperty("jdbc.driverClassName", "com.mysql.cj.jdbc.Driver");
+
+        if (env.getProperty("spring.datasource.url") == null) {
             throw new IllegalArgumentException("jdbc.url must be set in properties");
         }
-        if (env.getProperty("jdbc.user") == null) {
+        if (env.getProperty("spring.datasource.username") == null) {
             throw new IllegalArgumentException("jdbc.user must be set in properties");
         }
-        if (env.getProperty("jdbc.pass") == null) {
+        if (env.getProperty("spring.datasource.password") == null) {
             throw new IllegalArgumentException("jdbc.pass must be set in properties");
         }
 
-        dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getProperty("jdbc.url"));
-        dataSource.setUsername(env.getProperty("jdbc.user"));
-        dataSource.setPassword(env.getProperty("jdbc.pass"));
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(env.getProperty("spring.datasource.url"));
+        dataSource.setUsername(env.getProperty("spring.datasource.username"));
+        dataSource.setPassword(env.getProperty("spring.datasource.password"));
 
         return dataSource;
     }
@@ -78,11 +76,11 @@ public class PersistenceJPAConfig {
 
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
+        hibernateProperties.setProperty("hibernate.dialect", env.getProperty("spring.jpa.properties.hibernate.dialect"));
         hibernateProperties.setProperty("hibernate.cache.use_second_level_cache", "false");
-        hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-        hibernateProperties.setProperty("hibernate.generateDdl", env.getProperty("hibernate.generateDdl"));
+        hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
+        hibernateProperties.setProperty("hibernate.generateDdl", "true");
 
         return hibernateProperties;
     }
