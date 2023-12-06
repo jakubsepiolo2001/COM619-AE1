@@ -32,6 +32,7 @@ limitations under the License.
         <p>Username <input type="text" name="username" ></input></p><BR>
         <p>Password <input type="password" name="password" ></input></p>
         <p>Re Enter Password <input type="password" name="password2" ></input></p>
+        <p>*By Creating a new account you will have accepted our policy regarding GDPR and your information</p>
         <p><button type="submit" >Create New Account</button></p>
     </form> 
 
