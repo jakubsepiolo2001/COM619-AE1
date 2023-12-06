@@ -29,6 +29,7 @@ limitations under the License.
         <input type="hidden" name="action" value="login">
         <p>Username <input type="text" name="username" ></input></p><BR>
         <p>Password <input type="password" name="password" ></input></p>
+        <p>*By logging in you you have accepted our policy regarding GDPR and your information</p>
         <p><button type="submit" >Log In</button></p>
     </form> 
     
