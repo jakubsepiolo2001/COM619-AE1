@@ -18,9 +18,22 @@ limitations under the License.
 <%@ page import="org.project.user.model.UserRole" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            function changeLocale() {
+                console.log("changeLocale function called");
+                console.log()
+                var langDropdown = document.getElementById("langDropdown");
+                var selectedLang = langDropdown.options[langDropdown.selectedIndex].value;
+                if (selectedLang) {
+                    window.location.href = selectedLang;
+                }
+            }
+        </script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,8 +56,16 @@ limitations under the License.
     <body>
 
         <div class="container">
-
+            <c:set var="currentLanguage" value="${pageContext.request.locale.language}" />
             <!-- Static navbar -->
+            <select id="langDropdown" onchange="changeLocale()">
+                <option></option>
+                <option value="${pageContext.request.contextPath}/change-locale?lang=en" <% if ("en".equals(request.getAttribute("currentLanguage"))) {%>selected<% }%>><spring:message code="switch-en" text="English" /></option>
+                <option value="${pageContext.request.contextPath}/change-locale?lang=it" <% if ("it".equals(request.getAttribute("currentLanguage"))) {%>selected<% }%>><spring:message code="switch-it" text="Italian" /></option>
+                <option value="${pageContext.request.contextPath}/change-locale?lang=de" <% if ("de".equals(request.getAttribute("currentLanguage"))) {%>selected<% }%>><spring:message code="switch-de" text="German" /></option>
+                <option value="${pageContext.request.contextPath}/change-locale?lang=fr" <% if ("fr".equals(request.getAttribute("currentLanguage"))) {%>selected<% }%>><spring:message code="switch-fr" text="French" /></option>
+                <!-- Add more languages as needed -->
+            </select>
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -60,15 +81,15 @@ limitations under the License.
                         <c:set var="selectedPage" value="${requestScope.selectedPage}" />
 
                         <ul class="nav navbar-nav">
-                            <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="/home">Home</a></li>
-                            <li <% if ("map".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="/map">Map</a></li>
-                            <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="/contact">Contact</a></li>
+                            <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="/home"> <spring:message code="home" text="Home" /></a></li>
+                            <li <% if ("map".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="/map"><spring:message code="map" text="Map" /></a></li>
+                            <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="/contact"><spring:message code="contact" text="Contact" /></a></li>
                                 <c:if test="${sessionUser.userRole =='ADMINISTRATOR'}">
                                 <li class="dropdown" >
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Admin <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><spring:message code="admin-dropdown" text="Admin" /><span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="./users">Manage Users</a></li>
-                                        <li><a href="./points">Manage Points</a></li>
+                                        <li><a href="./users"><spring:message code="admin-manage-users" text="Manage Users" /></a></li>
+                                        <li><a href="./points"><spring:message code="admin-manage-points" text="Manage Points" /></a></li>
                                     </ul>
                                 </li>
                             </c:if>
@@ -76,7 +97,7 @@ limitations under the License.
                         <ul class="nav navbar-nav navbar-right">
                             <!-- user role:  ${sessionUser.userRole}-->
                             <c:if test="${sessionUser.userRole =='ANONYMOUS'}">
-                                <li><a href="./login">Login or create a new Account</a></li>
+                                <li><a href="./login"><spring:message code="login-create" text="Login or create a new Account" /></a></li>
                                 </c:if>
                                 <c:if test="${sessionUser.userRole !='ANONYMOUS'}">
                                 <form id="logoutForm" method="POST" action="./logout">
@@ -84,11 +105,11 @@ limitations under the License.
                                 <form id="profile" method="GET" action="./viewModifyUser">
                                     <input type="hidden" name="username" value="${sessionUser.username}"/>
                                 </form>
-                                <p class="text-muted"> Welcome 
+                                <p class="text-muted"> <spring:message code="welcome" text="Welcome" />
                                     <c:if test="${sessionUser.userRole =='ADMINISTRATOR'}"> Admin</c:if>                                   
                                     ${sessionUser.username}&nbsp;&nbsp;
-                                    <a onclick="document.forms['logoutForm'].submit()">Logout</a><BR>
-                                    <a onclick="document.forms['profile'].submit()">User Profile</a></p>
+                                    <a onclick="document.forms['logoutForm'].submit()"><spring:message code="logout-button" text="Logout" /></a><BR>
+                                    <a onclick="document.forms['profile'].submit()"><spring:message code="profile-button" text="Profile" /></a></p>
                                 </c:if>
                         </ul>
                     </div><!--/.nav-collapse -->
