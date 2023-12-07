@@ -8,8 +8,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.project.map.model.MapPoint;
 import org.project.map.repository.MapPointRepository;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
-@SpringBootApplication(scanBasePackages = {"org.project.map", "org.project.spring", "org.project.user", "org.project.map.repository", "org.project"})
+import java.util.Locale;
+
+@SpringBootApplication(scanBasePackages = {"org.project.map", "org.project.spring", "org.project.user", "org.project.map.repository", "org.project", "org.project.spring.controller"})
 public class SpringBootJspApplication extends SpringBootServletInitializer {
 
     @Bean
@@ -27,6 +32,7 @@ public class SpringBootJspApplication extends SpringBootServletInitializer {
             }
         };
     }
+
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootJspApplication.class);

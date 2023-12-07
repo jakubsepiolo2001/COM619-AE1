@@ -21,6 +21,7 @@ limitations under the License.
     Environment environment = WebApplicationContextUtils.getWebApplicationContext(application).getEnvironment();
     String apiUrl = environment.getProperty("api.base-url");
 %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page import="org.project.config.ApiConfig" %>
 
 
@@ -59,8 +60,8 @@ limitations under the License.
 
 <div class="container">
 
-    <button onclick="createPoint()">Create Point!</button>
-    <button onclick="getLocation()">Get My Location!</button>
+    <button onclick="createPoint()"><spring:message code="button-create-point" text="Create Point" /></button>
+    <button onclick="getLocation()"><spring:message code="button-get-location" text="Get Location" /></button>
     <article>
         <header>
             <h1>Leaflet App</h1>
