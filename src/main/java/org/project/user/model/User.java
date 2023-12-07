@@ -21,7 +21,6 @@ public class User {
     private String secondName = "";
 
     private String username = "";
-
     private String password = "";
 
     private String hashedPassword = "";

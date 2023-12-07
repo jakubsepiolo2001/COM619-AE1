@@ -59,6 +59,13 @@ limitations under the License.
 <body>
 
 <div class="container">
+    <input type="text" id="nameInput" placeholder="Enter Name">
+    <input type="text" id="descriptionInput" placeholder="Enter Description">
+    <input type="text" id="categoryInput" placeholder="Enter Category">
+    <input type="text" id="latInput" placeholder="Enter Latitude">
+    <input type="text" id="lngInput" placeholder="Enter Longitude">
+
+
 
     <button onclick="createPoint()"><spring:message code="button-create-point" text="Create Point" /></button>
     <button onclick="getLocation()"><spring:message code="button-get-location" text="Get Location" /></button>
