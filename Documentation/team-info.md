@@ -10,3 +10,9 @@
 | Owen Bradstreet | 5brado63@solent.ac.uk | owenbradstreet |
 | Luke Wood | 5woodl59@solent.ac.uk | lwoodremote |
 | Steve Dawe | 5dawes65@solent.ac.uk | 5Dawe |
+
+### Live Project URL:
+https://com619-1-vm.uksouth.cloudapp.azure.com/
+
+### Project GitHub URL:
+https://github.com/jakubsepiolo2001/COM619-AE1
