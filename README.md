@@ -28,17 +28,11 @@
 
 
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+
 
 <h3 align="center">Git Guardians COM619 Dev ops</h3>
 
   <p align="center">
-    This project entails a spring-boot application which utilities several different technologies to create a complete application that follows the ideas of an industry level application which uses dev ops practices.
     <br />
     <a href="https://github.com/jakubsepiolo2001/COM619-AE1"><strong>Explore the docs »</strong></a>
     <br />
@@ -53,31 +47,7 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+
 
 
 
@@ -86,7 +56,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+   This project entails a spring-boot application which utilities several different technologies to create a complete application that follows the ideas of an industry level application which uses dev ops practices.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -106,36 +76,57 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+The following are instructions on how to get either a local hosted application running or an application hosted in a remote virtual machine
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * Java (Java 19 is recommended)
   https://www.java.com/download/ie_manual.jsp
- * Docker
+ * Docker Desktop 
+ https://www.docker.com/products/docker-desktop/
+ * Firefox (Required for build testing)
+ https://www.mozilla.org/en-GB/firefox/new/
  
 
-### Installation
+### Local Build
 
-1. Ensure you have Java and Docker installed
+1. Ensure you have Java, Docker Desktop and Firefox installed
 2. Clone the repo
    ```sh
-   git clone https://github.com/gjakubsepiolo2001/COM619-AE1.git
+   git clone https://github.com/jakubsepiolo2001/COM619-AE1.git
    ```
 3. Create a clean maven build
    ```sh
    mvn clean insall
    ```
-4. To run the build locally on your machine
+4. Launch Docker Desktop on your machine
+5. Run the appropriate docker-compose command to spin up the containers
    ```sh
    docker-compose -f docker-compose-dev.yml up
    ```
-5. To run the build in a remote cloud server
-	```sh
-	docker-compose -f docker-compose.yml up
-	```
-Make sure this is accurate
+6. Visit the website at localhost:8080
+
+### Remote Build
+
+1. Ensure you have Java, Docker Desktop and Firefox installed on your remote machine
+2. Clone the repo
+   ```sh
+   git clone https://github.com/jakubsepiolo2001/COM619-AE1.git
+   ```
+3. Update line 45 in `docker-compose.yml` contained in the root folder ``
+   command: certonly --webroot -w /var/www/certbot/  --staging --force-renewal --email 5dawes65@solent.ac.uk -d com619-1-vm.uksouth.cloudapp.azure.com --agree-tos
+   `` with your email and hosted url to ensure you generate a certificate for your site
+  4. Update the API URL to your hosted URL at line 1 in `src/main/resources/application-prod.properties` which by default is `api.base-url=https://com619-1-vm.uksouth.cloudapp.azure.com/`
+5. Create a clean maven build
+   ```sh
+   sudo mvn clean insall
+   ```
+6. Run the appropriate docker-compose command to spin up the containers
+   ```sh
+   sudo docker-compose -f docker-compose.yml up
+   ```
+7. Visit the website at your hosted address
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -143,26 +134,17 @@ Make sure this is accurate
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Once the application is up and running you should be able to perform the following functionality
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+ 1. Login as either an admin `globaladmin:globaladmin` or user `user1234:user1234`
+ 2. Create points under the map page
+ 3. View points contained in the database
+ 4. Modify points contained in the database if you are an admin
+ 5. Modify users in the databse if you are an admin
+ 6. Modify your own information as a user
+ 7. Visit the API Documentation which by default is contained at `/swagger-ui/index.html`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -186,7 +168,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the Apache License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -195,23 +177,18 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+| Team Member | Email Address | GitHub Name |
+| --------- | --------- | --------- |
+| Jakub Sepiolo | 5sepij35@solent.ac.uk | jakubsepiolo2001 |
+| Tyler Short | 5short82@solent.ac.uk | Tyler-Short1 |
+| Owen Bradstreet | 5brado63@solent.ac.uk | owenbradstreet |
+| Luke Wood | 5woodl59@solent.ac.uk | lwoodremote |
+| Steve Dawe | 5dawes65@solent.ac.uk | 5Dawe |
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+Project Link: [https://github.com/jakubsepiolo2001/COM619-AE1](https://github.com/jakubsepiolo2001/COM619-AE1)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
