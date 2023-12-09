@@ -18,22 +18,23 @@ limitations under the License.
 // request set in controller
 //    request.setAttribute("selectedPage","contact");
 %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <jsp:include page="header.jsp" />
 <!-- Begin page content -->
 <main role="main" class="container">
-    <H1>Login</H1>
+    <H1><spring:message code="login-header" text="Login" /></H1>
     <div style="color:red;">${errorMessage}</div>
     <div style="color:green;">${message}</div>
 
     <form action="./login" method="post">
         <input type="hidden" name="action" value="login">
-        <p>Username <input type="text" name="username" ></input></p><BR>
-        <p>Password <input type="password" name="password" ></input></p>
-        <p>*By logging in you you have accepted our policy regarding GDPR and your information</p>
-        <p><button type="submit" >Log In</button></p>
+        <p><spring:message code="login-username" text="Username " /><input type="text" name="username" ></input></p><BR>
+        <p><spring:message code="login-password" text="Password " /><input type="password" name="password" ></input></p>
+        <p><spring:message code="login-gdpr" text="*By logging in you have accepted our policy regarding GDPR and your information" /></p>
+        <p><button type="submit" ><spring:message code="login-login-button" text="Login" /></button></p>
     </form> 
     
-    <a href="./register">Create a new account</a>
+    <a href="./register"><spring:message code="login-create-button" text="Create a new account" /></a>
 </main>
 
 

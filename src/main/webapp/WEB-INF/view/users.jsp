@@ -18,6 +18,7 @@ limitations under the License.
 <%@page import="org.project.user.model.User"%>
 <%@page import="org.project.user.model.UserRole"%>
 <c:set var = "selectedPage" value = "admin" scope="request"/>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <jsp:include page="header.jsp" />
 <!-- start of users.jsp selectedPage=${selectedPage}-->
 
@@ -25,17 +26,16 @@ limitations under the License.
 <main role="main" class="container">
 
     <div>
-        <h1>Manage Users</h1>
-        <p>showing ${userListSize} users: </p>
+        <h1><spring:message code="users-header" text="Modify Users" /></h1>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Second Name</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Role</th>
+                    <th scope="col">ID</th>
+                    <th scope="col"><spring:message code="users-username" text="Username" /></th>
+                    <th scope="col"><spring:message code="users-firstname" text="First Name" /></th>
+                    <th scope="col"><spring:message code="users-secondname" text="Second Name" /></th>
+                    <th scope="col"><spring:message code="users-status" text="Status" /></th>
+                    <th scope="col"><spring:message code="users-role" text="Role" /></th>
                     <th></th>
                 </tr>
             </thead>
@@ -47,12 +47,12 @@ limitations under the License.
                         <td>${user.firstName}</td>
                         <td>${user.secondName}</td>
                         <!-- user.enabled=${user.enabled}-->
-                        <td><c:if test="${user.enabled}">ENABLED</c:if><c:if test="${!user.enabled}">DISABLED</c:if></td>
+                        <td><c:if test="${user.enabled}"><spring:message code="users-enabled" text="ENABLED" /></c:if><c:if test="${!user.enabled}"><spring:message code="users-disabled" text="DISABLED" /></c:if></td>
                         <td>${user.userRole}</td>
                         <td>
                             <form action="./viewModifyUser" method="GET">
                                 <input type="hidden" name="username" value="${user.username}">
-                                <button class="btn" type="submit" >Modify User</button>
+                                <button class="btn" type="submit" ><spring:message code="users-modify-button" text="Modify User" /></button>
                             </form> 
                         </td>
                     </tr>
@@ -61,7 +61,7 @@ limitations under the License.
             </tbody>
         </table>
         <form action="./register" method="GET">
-            <button class="btn" type="submit" >Add User</button>
+            <button class="btn" type="submit" ><spring:message code="users-add-button" text="Add User" /></button>
         </form> 
     </div>
 </main>

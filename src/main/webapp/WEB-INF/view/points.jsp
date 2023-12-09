@@ -18,6 +18,7 @@ limitations under the License.
 <%@page import="org.project.user.model.User"%>
 <%@page import="org.project.user.model.UserRole"%>
 <%@ page import="org.springframework.core.env.Environment" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%
     Environment environment = WebApplicationContextUtils.getWebApplicationContext(application).getEnvironment();
@@ -31,17 +32,16 @@ limitations under the License.
 <main role="main" class="container">
 
     <div>
-        <h1>Manage Points</h1>
-        <p>Showing ${mapPointListSize} points: </p>
+        <h1><spring:message code="points-table-header" text="Manage Points" /></h1>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-                <th scope="col">Lat</th>
-                <th scope="col">Lng</th>
+                <th scope="col"><spring:message code="points-table-name" text="Name" /></th>
+                <th scope="col"><spring:message code="points-table-desc" text="Description" /></th>
+                <th scope="col"><spring:message code="points-table-cat" text="Category" /></th>
+                <th scope="col"><spring:message code="points-table-lat" text="Latitude" /></th>
+                <th scope="col"><spring:message code="points-table-lng" text="Longitude" /></th>
                 <th></th>
             </tr>
             </thead>
@@ -55,7 +55,7 @@ limitations under the License.
                     <td>${point.lat}</td>
                     <td>${point.lng}</td>
                     <td>
-                        <button class="remove-point-btn" data-pointid="${point.id}">Remove Point</button>
+                        <button class="remove-point-btn" data-pointid="${point.id}"><spring:message code="points-table-remove" text="Remove Point" /></button>
                     </td>
                 </tr>
             </c:forEach>

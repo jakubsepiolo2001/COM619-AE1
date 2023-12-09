@@ -71,7 +71,7 @@ limitations under the License.
     <button onclick="getLocation()"><spring:message code="button-get-location" text="Get Location" /></button>
     <article>
         <header>
-            <h1>Leaflet App</h1>
+            <h1><spring:message code="leaflet-map-title" text="Map" /></h1>
             <p></p>
         </header>
         <section>
