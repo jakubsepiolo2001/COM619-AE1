@@ -84,22 +84,17 @@ limitations under the License.
                             <li <% if ("home".equals(request.getAttribute("selectedPage"))) {%> class="active"  <% } %> ><a href="/home"> <spring:message code="home" text="Home" /></a></li>
                             <li <% if ("map".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% } %> ><a href="/map"><spring:message code="map" text="Map" /></a></li>
                             <li <% if ("contact".equals(request.getAttribute("selectedPage"))) {%>  class="active"  <% }%> ><a href="/contact"><spring:message code="contact" text="Contact" /></a></li>
-                                <c:if test="${sessionUser.userRole =='ADMINISTRATOR'}">
-                                <li class="dropdown" >
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><spring:message code="admin-dropdown" text="Admin" /><span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="./users"><spring:message code="admin-manage-users" text="Manage Users" /></a></li>
-                                        <li><a href="./points"><spring:message code="admin-manage-points" text="Manage Points" /></a></li>
-                                    </ul>
-                                </li>
+                            <c:if test="${sessionUser.userRole =='ADMINISTRATOR'}">
+                                <li><a href="./users"><spring:message code="admin-manage-users" text="Manage Users" /></a></li>
+                                <li><a href="./points"><spring:message code="admin-manage-points" text="Manage Points" /></a></li>
                             </c:if>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <!-- user role:  ${sessionUser.userRole}-->
-                            <c:if test="${sessionUser.userRole =='ANONYMOUS'}">
+                            <c:if test="${sessionUser.userRole =='ANONYMOUS' || sessionUser eq null}">
                                 <li><a href="./login"><spring:message code="login-create" text="Login or create a new Account" /></a></li>
                                 </c:if>
-                                <c:if test="${sessionUser.userRole !='ANONYMOUS'}">
+                                <c:if test="${sessionUser.userRole !='ANONYMOUS' && sessionUser ne null}">
                                 <form id="logoutForm" method="POST" action="./logout">
                                 </form>
                                 <form id="profile" method="GET" action="./viewModifyUser">
