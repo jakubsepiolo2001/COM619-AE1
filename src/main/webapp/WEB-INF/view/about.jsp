@@ -19,9 +19,10 @@ limitations under the License.
 //    request.setAttribute("selectedPage","about");
 %>
 <jsp:include page="header.jsp" />
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- Begin page content -->
 <main role="main" class="container">
-    <H1>About</H1>
+    <H1><spring:message code="about-about" text="About" /></H1>
 </main>
 
 

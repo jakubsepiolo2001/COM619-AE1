@@ -19,9 +19,10 @@ limitations under the License.
 <!-- request set in controller -->
 <% request.setAttribute("selectedPage", "home"); %>
 <jsp:include page="header.jsp" />
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- Begin page content -->
 <main role="main" class="container">
-    <H1>Home</H1>
+    <H1><spring:message code="home-header" text="Home" /></H1>
     <div style="color:red;">${errorMessage}</div>
     <div style="color:green;">${message}</div>
 

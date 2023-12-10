@@ -15,16 +15,15 @@ limitations under the License.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="header.jsp" />
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- Begin page content -->
 <main role="main" class="container">
-        <h1>Error Page</h1>
-        <p>Application has encountered an error.</p>
+        <h1><spring:message code="error-header" text="Error Page" /></h1>
+        <p><spring:message code="error-message" text="Application has encountered an error." /></p>
         <p>${error}</p>
         <p>${status}</p>
-        <p>Failed URL: ${requestUrl}</p>
-        <p>Exception:  ${exception.message}</p>
-        <p>Stack trace:</p>
-        <p>${strStackTrace}</p>
+        <p><spring:message code="error-failed-url" text="Failed URL: " />${requestUrl}</p>
+        <p><spring:message code="error-exception" text="Exception: " />${exception.message}</p>
 </main>
 
 <jsp:include page="footer.jsp" />

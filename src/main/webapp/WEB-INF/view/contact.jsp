@@ -19,9 +19,10 @@ limitations under the License.
 //    request.setAttribute("selectedPage","contact");
 %>
 <jsp:include page="header.jsp" />
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- Begin page content -->
 <main role="main" class="container">
-    <H1>Contact</H1>
+    <H1><spring:message code="contact-header" text="Contact" /></H1>
     <p>Tyler Short - 5short82@solent.ac.uk</p>
     <p>Owen Bradstreet - 5brado63@solent.ac.uk</p>
     <p>Jakub Sepiolo - 5sepij35@solent.ac.uk</p>

@@ -17,6 +17,7 @@ limitations under the License.
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="org.project.user.model.User"%>
 <%@page import="org.project.user.model.UserRole"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var = "selectedPage" value = "users" scope="request"/>
 <jsp:include page="header.jsp" />
 
@@ -24,7 +25,7 @@ limitations under the License.
 <main role="main" class="container">
 
     <div>
-        <H1>User Details ${modifyUser.username} </H1>
+        <H1><spring:message code="view-user-modify-header" text="User Details" /> ${modifyUser.username} </H1>
         <!-- print error message if there is one -->
         <div style="color:red;">${errorMessage}</div>
         <div style="color:green;">${message}</div>
@@ -36,55 +37,55 @@ limitations under the License.
 
                 <tbody>
                     <tr>
-                        <td>User ID</td>
+                        <td><spring:message code="view-user-modify-id" text="User ID" /></td>
                         <td>${modifyUser.id}</td>
                     </tr>
                     <tr>
-                        <td>username</td>
+                        <td><spring:message code="view-user-modify-username" text="Username" /></td>
                         <td>${modifyUser.username}</td>
                     </tr>
                     <tr>
-                        <td>First Name</td>
+                        <td><spring:message code="view-user-modify-first-name" text="First Name" /></td>
                         <td><input type="text" name="firstName" value="${modifyUser.firstName}" /></td>
                     </tr>
                     <tr>
-                        <td>Second Name</td>
+                        <td><spring:message code="view-user-modify-second-name" text="Second Name" /></td>
                         <td><input type="text" name="secondName" value="${modifyUser.secondName}" /></td>
                     </tr>
                     <tr>
-                        <td>House Number</td>
+                        <td><spring:message code="view-user-modify-house-number" text="House Number" /></td>
                         <td><input type="text" name="houseNumber" value="${modifyUser.address.houseNumber}" /></td>
                     </tr>
                     <tr>
-                        <td>Address Line 1</td>
+                        <td><spring:message code="view-user-modify-address-line-1" text="Address Line 1" /></td>
                         <td><input type="text" name="addressLine1" value="${modifyUser.address.addressLine1}" /></td>
                     </tr>
                     <tr>
-                        <td>Address Line 2</td>
+                        <td><spring:message code="view-user-modify-address-line-2" text="Address Line 2" /></td>
                         <td><input type="text" name="addressLine2" value="${modifyUser.address.addressLine2}" /></td>
                     </tr>
                     <tr>
-                        <td>city</td>
+                        <td><spring:message code="view-user-modify-city" text="City" /></td>
                         <td><input type="text" name="county" value="${modifyUser.address.city}" /></td>
                     </tr>
                     <tr>
-                        <td>county</td>
+                        <td><spring:message code="view-user-modify-County" text="County" /></td>
                         <td><input type="text" name="county" value="${modifyUser.address.county}" /></td>
                     </tr>
                     <tr>
-                        <td>country</td>
+                        <td><spring:message code="view-user-modify-country" text="Country" /></td>
                         <td><input type="text" name="country" value="${modifyUser.address.country}" /></td>
                     </tr>
                     <tr>
-                        <td>postcode</td>
+                        <td><spring:message code="view-user-modify-postcode" text="Postcode" /></td>
                         <td><input type="text" name="postcode" value="${modifyUser.address.postcode}" /></td>
                     </tr>
                     <tr>
-                        <td>telephone</td>
+                        <td><spring:message code="view-user-modify-tele" text="Telephone" /></td>
                         <td><input type="text" name="telephone" value="${modifyUser.address.telephone}" /></td>
                     </tr>
                     <tr>
-                        <td>mobile</td>
+                        <td><spring:message code="view-user-modify-mobile" text="Mobile" /></td>
                         <td><input type="text" name="mobile" value="${modifyUser.address.mobile}" /></td>
                     </tr>
 
@@ -93,31 +94,31 @@ limitations under the License.
             </table>
 
             <c:if test="${sessionUser.userRole !='ADMINISTRATOR'}">
-                <p>User Status and role </p>
+                <p><spring:message code="view-user-modify-user-status-and-role" text="User Status and Role" /></p>
                 <table class="table">
                     <thead>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Role</td>
+                            <td><spring:message code="view-user-modify-role" text="Role" /></td>
                             <td>${modifyUser.userRole}</td>
                         </tr>
                         <tr>
-                            <td>enabled</td>
-                            <td><c:if test="${modifyUser.enabled}">ENABLED</c:if><c:if test="${!modifyUser.enabled}">DISABLED</c:if></td>
+                            <td><spring:message code="view-user-modify-status" text="Status" /></td>
+                            <td><c:if test="${modifyUser.enabled}"><spring:message code="view-user-modify-enabled" text="ENABLED" /></c:if><c:if test="${!modifyUser.enabled}"><spring:message code="view-user-modify-disabled" text="DISABLED" /></c:if></td>
                             </tr>
                         </tbody>
                     </table>
             </c:if>
 
             <c:if test="${sessionUser.userRole =='ADMINISTRATOR'}">
-                <p>Manage User Status and role </p>
+                <p><spring:message code="view-user-modify-manage-user-status-and-role" text="Manage User Status and Role" /></p>
                 <table class="table">
                     <thead>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Role</td>
+                            <td><spring:message code="view-user-modify-role" text="Role" /></td>
                             <td>
                                 <select class="form-control" name="userRole" >
                                     <c:forEach var="value" items="${UserRole.values()}">
@@ -130,8 +131,8 @@ limitations under the License.
                             <td>enabled</td>
                             <td>
                                 <select class="form-control" name="userEnabled" >
-                                    <option value="true" <c:if test="${modifyUser.enabled}"> selected  </c:if> >ENABLED</option>
-                                    <option value="false" <c:if test="${!modifyUser.enabled}"> selected  </c:if> >DISABLED</option>
+                                    <option value="true" <c:if test="${modifyUser.enabled}"> selected  </c:if> ><spring:message code="view-user-modify-enabled" text="ENABLED" /></option>
+                                    <option value="false" <c:if test="${!modifyUser.enabled}"> selected  </c:if> ><spring:message code="view-user-modify-disabled" text="DISABLED" /></option>
                                     </select>
                                 </td>
                             </tr>
@@ -140,20 +141,20 @@ limitations under the License.
             </c:if>
 
             <input type="hidden" name="username" value="${modifyUser.username}"/>
-            <button class="btn" type="submit" >Update User ${modifyUser.username}</button>
+            <button class="btn" type="submit" ><spring:message code="view-user-modify-update-user-button" text="Update User" /> ${modifyUser.username}</button>
         </form>
-        <p>Update Password</p>
+        <p><spring:message code="view-user-modify-update-password-header" text="Update Password" /></p>
         <form action="./viewModifyUser" method="post">
             <input type="hidden" name="username" value="${modifyUser.username}"/>
             <input type="hidden" name="action" value="updatePassword"/>
-            <p>Password <input type="password" name="password" ></input></p>
-            <p>Re Enter Password <input type="password" name="password2" ></input></p>
-            <button class="btn" type="submit" >Update ${modifyUser.username} Password</button>
+            <p><spring:message code="view-user-modify-password" text="Password" />Password <input type="password" name="password" ></input></p>
+            <p><spring:message code="view-user-modify-confirm-password" text="Re-enter Password" /> <input type="password" name="password2" ></input></p>
+            <button class="btn" type="submit" ><spring:message code="view-user-modify-update-password-button" text="Update " />${modifyUser.username} Password</button>
         </form>
         <c:if test="${sessionUser.userRole =='ADMINISTRATOR'}">
             <BR>
             <form action="./users">
-                <button class="btn" type="submit" >Return To Users</button>
+                <button class="btn" type="submit" ><spring:message code="view-user-modify-return-button" text="Return to Users" /></button>
             </form> 
         </c:if> 
 
