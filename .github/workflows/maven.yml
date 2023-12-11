@@ -1,5 +1,5 @@
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# Research found at: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+# Research found at: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven & https://github.com/marketplace/actions/setup-firefox
 
 name: Java CI with Maven
 
@@ -22,6 +22,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+
+    - name: Setup Firefox
+      uses: browser-actions/setup-firefox@v1.4.0
+      with:
+        firefox-version: '120.0'
+          
     - name: Build with Maven
       run: mvn -B package --file pom.xml
       
