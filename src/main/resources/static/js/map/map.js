@@ -45,6 +45,9 @@ function createPoint(lat, lng) {
             // Check if we got valid json data returned with correct map point format
             if ('id' in data) {
                 alert("Created new point\nid: " + data.id + "\nname: " + data.name + "\ndescription: " + data.description + "\ncategory: " + data.category + "\nlat: " + data.lat + "\nlon: " + data.lng);
+                var newMarker = L.marker([data.lat, data.lng]).addTo(map);
+                newMarker.bindPopup("<h4>" + data.name + "</h4><br/>Category: <b>" + data.category + "</b><hr>Description:<br/>"+ data.description).openPopup();
+
             }
         })
         .catch(error => {
