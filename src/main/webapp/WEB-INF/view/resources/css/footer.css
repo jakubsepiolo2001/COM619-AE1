@@ -1,0 +1,9 @@
+.footer-bottom {
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    margin: 0 15px; /* Adjust the spacing between links */
+}
