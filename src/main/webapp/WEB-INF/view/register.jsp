@@ -34,6 +34,7 @@ limitations under the License.
         <p><spring:message code="register-password" text="Password " /><input type="password" name="password" ></input></p>
         <p><spring:message code="register-password-confirm" text="Re-enter Password " /><input type="password" name="password2" ></input></p>
         <p><spring:message code="register-gdpr" text="*By Creating a new account you will have accepted our policy regarding GDPR and your information" /></p>
+        <p><a href="./privacy">Privacy Notice</a></p>
         <p><button type="submit" ><spring:message code="register-button-confirm" text="Create a new account" /></button></p>
     </form> 
 

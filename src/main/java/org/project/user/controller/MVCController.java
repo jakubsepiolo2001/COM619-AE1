@@ -71,6 +71,11 @@ public class MVCController {
         return "LeafletJsp";
     }
 
+    @RequestMapping("/privacy")
+    public String privacy(){
+        return "privacy";
+    }
+
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
     public String viewCart(@RequestParam(name = "action", required = false) String action,
             @RequestParam(name = "itemName", required = false) String itemName,
