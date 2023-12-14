@@ -23,6 +23,7 @@ limitations under the License.
 <!-- Begin page content -->
 <main role="main" class="container">
     <H1><spring:message code="home-header" text="Home" /></H1>
+    <p><spring:message code="home-message" text="Welcome to the Git Guardians website" /></p>
     <div style="color:red;">${errorMessage}</div>
     <div style="color:green;">${message}</div>
 
