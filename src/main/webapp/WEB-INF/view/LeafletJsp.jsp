@@ -1,5 +1,5 @@
 <%--
-Copyright [yyyy] [name of copyright owner]
+Copyright 2023 Git Guardians
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ limitations under the License.
     String apiUrl = environment.getProperty("api.base-url");
 %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page import="org.project.config.ApiConfig" %>
 
 
 <!DOCTYPE html>
@@ -77,20 +76,20 @@ limitations under the License.
         <section>
             <div id="map" style="height: 440px; border: 1px solid #AAA;"></div>
             <div id="loader"></div>
-            <p><a href="./swagger-ui/index.html" target="_blank">Swagger (OpenAPI) UI</a></p>
-            <p><a href="./api-docs" target="_blank">Swagger (OpenAPI) Json Definition</a></p>
             </section>
         <footer>
 
         </footer>
         <hr/>
     </article>
+    <p>
 
-    <footer style="text-align: center">
-        <p><span style="text-decoration:none;color:grey;">/* Map - <a style="text-decoration:none;color:grey;" href="https://github.com/imaginalis"><span class="glyphicon glyphicon-star"></span>  imaginalis</a> */</span>
-        </p>
-    </footer>
 
+
+
+
+
+    </p>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

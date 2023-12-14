@@ -1,5 +1,5 @@
 <%--
-Copyright [yyyy] [name of copyright owner]
+Copyright 2023 Git Guardians
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ limitations under the License.
 <!-- Begin page content -->
 <main role="main" class="container">
     <H1><spring:message code="home-header" text="Home" /></H1>
+    <p><spring:message code="home-message" text="Welcome to the Git Guardians website" /></p>
     <div style="color:red;">${errorMessage}</div>
     <div style="color:green;">${message}</div>
 

@@ -1,5 +1,5 @@
 <%--
-Copyright [yyyy] [name of copyright owner]
+Copyright 2023 Git Guardians
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,10 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-// request set in controller
-//    request.setAttribute("selectedPage","contact");
-%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <jsp:include page="header.jsp" />
 <!-- Begin page content -->

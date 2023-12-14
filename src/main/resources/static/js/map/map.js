@@ -40,11 +40,12 @@ function createPoint(lat, lng) {
     })
         .then(response => handleResponse(response))
         .then(data => {
-            console.log(data);
-
             // Check if we got valid json data returned with correct map point format
             if ('id' in data) {
                 alert("Created new point\nid: " + data.id + "\nname: " + data.name + "\ndescription: " + data.description + "\ncategory: " + data.category + "\nlat: " + data.lat + "\nlon: " + data.lng);
+                var newMarker = L.marker([data.lat, data.lng]).addTo(map);
+                newMarker.bindPopup("<h4>" + data.name + "</h4><br/>Category: <b>" + data.category + "</b><hr>Description:<br/>"+ data.description).openPopup();
+
             }
         })
         .catch(error => {
@@ -55,8 +56,6 @@ function createPoint(lat, lng) {
 }
 
 function handleResponse(response) {
-    console.log(response);
-
     if (!response.ok) {
         // Handle error responses
         if (response.status === 403) {
@@ -71,7 +70,6 @@ function handleResponse(response) {
     }
 
     // Handle other successful responses
-    console.log("Request successful with status:", response.status);
     return response.json();
 }
 
@@ -92,8 +90,6 @@ function getLocation() {
 }
 
 function showError(error) {
-    console.log("Geolocation Error:", error);
-
     switch(error.code) {
         case error.PERMISSION_DENIED:
             alert("User denied the request for Geolocation.");

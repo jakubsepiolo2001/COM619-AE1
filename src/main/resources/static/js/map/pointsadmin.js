@@ -3,9 +3,6 @@ document.querySelector('table').addEventListener('click', function(event) {
         event.preventDefault();
 
         const pointid = event.target.getAttribute('data-pointid');
-        console.log("Hello, this is being called");
-        console.log("Point ID:", pointid);
-
         fetch(apiUrl + "delete/id/"+ pointid, {
             method: 'POST',
             headers: {

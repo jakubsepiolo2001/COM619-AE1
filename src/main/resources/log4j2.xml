@@ -31,9 +31,7 @@
         
     </Appenders>
     <Loggers>
-        
-        <!-- The name org.solent specifies that log names beginning with this string are dealt with by the following appenders -->
-        <!-- i.e. in our config, classes in package names beginnign org.solent -->
+
         <Logger name="org.project"  additivity="false" level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="appLog"/>

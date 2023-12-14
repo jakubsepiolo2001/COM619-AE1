@@ -1,5 +1,5 @@
 <%--
-Copyright [yyyy] [name of copyright owner]
+Copyright 2023 Git Guardians
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@ limitations under the License.
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="org.project.user.model.User"%>
 <%@page import="org.project.user.model.UserRole"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var = "selectedPage" value = "users" scope="request"/>
