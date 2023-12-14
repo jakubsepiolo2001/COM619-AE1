@@ -35,7 +35,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//TODO Convert to OpenAPI Format
 @RestController
 @RequestMapping("/")
 public class UserRestController {

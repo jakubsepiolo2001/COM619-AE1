@@ -39,9 +39,6 @@ public class LocaleController {
         // Set the locale in the session
         localeResolver.setLocale(request, response, new Locale(lang));
 
-        // Print to console for debugging
-        System.out.println("Changed to: " + lang);
-
         // Redirect back to the referring page
         return "redirect:" + request.getHeader("Referer");
     }

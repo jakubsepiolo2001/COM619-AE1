@@ -195,7 +195,6 @@ public class MVCController {
         List<User> userList = userRepository.findByUsername(username);
 
         if ("login".equals(action)) {
-            //todo find and add modifyUser and test password
             LOG.debug("logging in user username=" + username);
             if (userList.isEmpty()) {
                 errorMessage = "cannot find user for username :" + username;

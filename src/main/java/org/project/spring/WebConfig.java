@@ -29,7 +29,6 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    // Define the LocaleResolver bean
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
@@ -37,7 +36,6 @@ public class WebConfig implements WebMvcConfigurer {
         return localeResolver;
     }
 
-    // Define the LocaleChangeInterceptor bean
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();

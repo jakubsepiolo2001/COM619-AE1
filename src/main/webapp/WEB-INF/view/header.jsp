@@ -1,5 +1,5 @@
 <%--
-Copyright [yyyy] [name of copyright owner]
+Copyright 2023 Git Guardians
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,8 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="org.project.user.model.User" %>
-<%@ page import="org.project.user.model.UserRole" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -25,8 +23,6 @@ limitations under the License.
     <head>
         <script>
             function changeLocale() {
-                console.log("changeLocale function called");
-                console.log()
                 var langDropdown = document.getElementById("langDropdown");
                 var selectedLang = langDropdown.options[langDropdown.selectedIndex].value;
                 if (selectedLang) {

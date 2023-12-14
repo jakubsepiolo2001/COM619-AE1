@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApiConfig {
+    //Allows API url to be used from profile
     @Value("${api.base-url}")
     private String apiUrl;
 

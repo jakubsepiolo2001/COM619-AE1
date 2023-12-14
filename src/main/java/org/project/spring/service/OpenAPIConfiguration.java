@@ -23,6 +23,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenAPIConfiguration {
 
+    //Sets correct API URL on OpenAPI UI
     @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()

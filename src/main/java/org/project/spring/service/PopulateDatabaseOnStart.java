@@ -29,6 +29,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PopulateDatabaseOnStart {
 
+    //Creates 2 users if database is empty
+
     private static final Logger LOG = LogManager.getLogger(PopulateDatabaseOnStart.class);
 
     private static final String DEFAULT_ADMIN_USERNAME = "globaladmin";
