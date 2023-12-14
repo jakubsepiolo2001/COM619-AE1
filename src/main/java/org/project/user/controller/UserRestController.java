@@ -25,7 +25,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.project.map.model.MapPoint;
 import org.project.user.model.User;
 import org.project.user.model.UserDTO;
 import org.project.user.repository.UserRepository;

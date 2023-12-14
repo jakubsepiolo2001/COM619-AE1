@@ -23,8 +23,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-
-import io.swagger.v3.oas.annotations.Operation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.project.map.model.MapPoint;
