@@ -34,14 +34,14 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/jakubsepiolo2001/COM619-AE1"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jakubsepiolo2001/COM619-AE1/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/jakubsepiolo2001/COM619-AE1">View Demo</a>
+    <a href="https://com619-1-vm.uksouth.cloudapp.azure.com/">View Demo</a>
     ·
     <a href="https://github.com/jakubsepiolo2001/COM619-AE1/issues">Report Bug</a>
     ·
-    <a href="https://github.com/jakubsepiolo2001/COM619-AE1/issues">Request Feature</a>
+    <a href="https://www.youtube.com/watch?v=Lop1XAx9JyA">Project Video</a>
   </p>
 </div>
 
@@ -53,8 +53,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
    This project entails a spring-boot application which utilities several different technologies to create a complete application that follows the ideas of an industry level application which uses dev ops practices.
 
@@ -100,8 +98,9 @@ The following are instructions on how to get either a local hosted application r
    mvn clean insall
    ```
 4. Launch Docker Desktop on your machine
-5. Run the appropriate docker-compose command to spin up the containers
+5. Run the appropriate docker-compose commands to spin up the containers
    ```sh
+   docker-compose build
    docker-compose -f docker-compose-dev.yml up
    ```
 6. Visit the website at localhost:8080
@@ -111,7 +110,7 @@ The following are instructions on how to get either a local hosted application r
 1. Ensure you have Java, Docker Desktop and Firefox installed on your remote machine
 2. Clone the repo
    ```sh
-   git clone https://github.com/jakubsepiolo2001/COM619-AE1.git
+   sudo git clone https://github.com/jakubsepiolo2001/COM619-AE1.git
    ```
 3. Update line 45 in `docker-compose.yml` contained in the root folder ``
    command: certonly --webroot -w /var/www/certbot/  --staging --force-renewal --email 5dawes65@solent.ac.uk -d com619-1-vm.uksouth.cloudapp.azure.com --agree-tos
@@ -121,8 +120,9 @@ The following are instructions on how to get either a local hosted application r
    ```sh
    sudo mvn clean insall
    ```
-6. Run the appropriate docker-compose command to spin up the containers
+6. Run the appropriate docker-compose commands to spin up the containers
    ```sh
+   sudo docker-compose build
    sudo docker-compose -f docker-compose.yml up
    ```
 7. Visit the website at your hosted address
@@ -187,6 +187,7 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 
 
 Project Link: [https://github.com/jakubsepiolo2001/COM619-AE1](https://github.com/jakubsepiolo2001/COM619-AE1)
+Project Video: [https://youtu.be/Lop1XAx9JyA?si=Dwu5rckRQO01EI2T](https://youtu.be/Lop1XAx9JyA?si=Dwu5rckRQO01EI2T)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
