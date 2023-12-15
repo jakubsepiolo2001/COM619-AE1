@@ -34,7 +34,7 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/jakubsepiolo2001/COM619-AE1"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/jakubsepiolo2001/COM619-AE1/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://com619-1-vm.uksouth.cloudapp.azure.com/">View Demo</a>
