@@ -187,6 +187,7 @@ Distributed under the Apache License. See `LICENSE.txt` for more information.
 
 
 Project Link: [https://github.com/jakubsepiolo2001/COM619-AE1](https://github.com/jakubsepiolo2001/COM619-AE1)
+Project Video: [https://youtu.be/Lop1XAx9JyA?si=Dwu5rckRQO01EI2T](https://youtu.be/Lop1XAx9JyA?si=Dwu5rckRQO01EI2T)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
