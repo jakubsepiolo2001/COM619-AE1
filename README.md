@@ -37,11 +37,11 @@
     <a href="https://github.com/jakubsepiolo2001/COM619-AE1"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/jakubsepiolo2001/COM619-AE1">View Demo</a>
+    <a href="https://com619-1-vm.uksouth.cloudapp.azure.com/">View Demo</a>
     ·
     <a href="https://github.com/jakubsepiolo2001/COM619-AE1/issues">Report Bug</a>
     ·
-    <a href="https://github.com/jakubsepiolo2001/COM619-AE1/issues">Request Feature</a>
+    <a href="https://www.youtube.com/watch?v=Lop1XAx9JyA">Project Video</a>
   </p>
 </div>
 
@@ -53,8 +53,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
    This project entails a spring-boot application which utilities several different technologies to create a complete application that follows the ideas of an industry level application which uses dev ops practices.
 
