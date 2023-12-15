@@ -98,8 +98,9 @@ The following are instructions on how to get either a local hosted application r
    mvn clean insall
    ```
 4. Launch Docker Desktop on your machine
-5. Run the appropriate docker-compose command to spin up the containers
+5. Run the appropriate docker-compose commands to spin up the containers
    ```sh
+   docker-compose build
    docker-compose -f docker-compose-dev.yml up
    ```
 6. Visit the website at localhost:8080
@@ -109,7 +110,7 @@ The following are instructions on how to get either a local hosted application r
 1. Ensure you have Java, Docker Desktop and Firefox installed on your remote machine
 2. Clone the repo
    ```sh
-   git clone https://github.com/jakubsepiolo2001/COM619-AE1.git
+   sudo git clone https://github.com/jakubsepiolo2001/COM619-AE1.git
    ```
 3. Update line 45 in `docker-compose.yml` contained in the root folder ``
    command: certonly --webroot -w /var/www/certbot/  --staging --force-renewal --email 5dawes65@solent.ac.uk -d com619-1-vm.uksouth.cloudapp.azure.com --agree-tos
@@ -119,8 +120,9 @@ The following are instructions on how to get either a local hosted application r
    ```sh
    sudo mvn clean insall
    ```
-6. Run the appropriate docker-compose command to spin up the containers
+6. Run the appropriate docker-compose commands to spin up the containers
    ```sh
+   sudo docker-compose build
    sudo docker-compose -f docker-compose.yml up
    ```
 7. Visit the website at your hosted address
